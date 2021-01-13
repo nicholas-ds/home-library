@@ -5,6 +5,7 @@ import Account from './components/Account';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import styled from 'styled-components';
+import SearchBar from './components/SearchBar';
 
 function App() {
   return (
@@ -16,8 +17,8 @@ function App() {
             <Container>Homepage</Container>
           </Route>
           <Route path="/books" exact>
+            <SearchBar />
             <Books />
-            <div>Books</div>
           </Route>
           <Route path="/account" exact>
             <Account />

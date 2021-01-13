@@ -16,7 +16,7 @@ function Navbar() {
         </NavListItem>
       </Nav>
     </div>
-  ); // Brian, why not use class components?
+  );
 }
 
 const Nav = styled.ul`
