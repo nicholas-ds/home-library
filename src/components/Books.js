@@ -18,31 +18,31 @@ function Books() {
   if (!books) return null;
 
   return (
-    <>
+    <Gallery>
       {books.map((book) => (
-        <Gallery>
-          <Card>
+        <Card>
+          {book.volumeInfo.imageLinks && (
             <CardImageContainer>
-              <BookImg
-                src={book.volumeInfo.imageLinks.smallThumbnail}
-              ></BookImg>
+              <BookImg src={book.volumeInfo.imageLinks.smallThumbnail} />
             </CardImageContainer>
-            <CardInfo>
-              <h3>Title: {book.volumeInfo.title}</h3>
-              <p>Author: {book.volumeInfo.authors}</p>
-              <p>Publish Date: {book.volumeInfo.publishedDate}</p>
-            </CardInfo>
-          </Card>
-        </Gallery>
+          )}
+          <CardInfo>
+            <h3>Title: {book.volumeInfo.title}</h3>
+            <p>Author: {book.volumeInfo.authors}</p>
+            <p>Publish Year: {book.volumeInfo.publishedDate}</p>
+          </CardInfo>
+        </Card>
       ))}
-    </>
+    </Gallery>
   );
 }
 
 const Gallery = styled.div`
-  display: grid | inline-grid;
-  justify-content: space-evenly;
-  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(315px, 1fr));
+  grid-row-gap: 15px;
+  grid-column-gap: 15px;
+  grid-auto-rows: 1fr;
   max-width: 1200px;
   margin: auto;
 `;
@@ -53,15 +53,10 @@ const Card = styled.div`
   flex-wrap: nowrap;
   justify-content: flex-start;
   cursor: pointer;
-  width: 100%;
-  max-width: 360px;
-  margin: 10px 10px 20px;
   padding: 10px;
   background: rgba(245, 245, 245, 0.9);
   border-radius: 0.25em;
   border: 1px solid rgba(50, 50, 50, 0.3);
-  transition: 0.4s ease-out;
-  overflow: hidden;
 `;
 
 const CardInfo = styled.div`
