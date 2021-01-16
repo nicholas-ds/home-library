@@ -1,9 +1,21 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 
-function SearchBar() {
+function SearchBar(props) {
+  const [search, setSearch] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // console.log(search);
+  };
+
   return (
-    <BookSearch>
-      <SearchInput type="text" name="search"></SearchInput>
+    <BookSearch onSubmit={handleSubmit}>
+      <SearchInput
+        type="text"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      ></SearchInput>
       <SearchButton type="submit" value="Submit">
         Search
       </SearchButton>
@@ -23,7 +35,7 @@ const SearchInput = styled.input`
 
 const SearchButton = styled.button`
   border-radius: 4px;
-  broder: none;
+  border: none;
   text-align: center;
 `;
 

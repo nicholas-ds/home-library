@@ -1,39 +1,43 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import SearchBar from './SearchBar';
+
+const url =
+  'https://www.googleapis.com/books/v1/volumes?q=potter+inauthor:rowling&key=AIzaSyAxfOZ57IL-3EHpw-Hyd5yZ90ZjZgTg0Kc';
 
 function Books() {
   const [books, setBooks] = useState();
 
   useEffect(() => {
-    fetch(
-      'https://www.googleapis.com/books/v1/volumes?q=potter+inauthor:rowling&key=AIzaSyAxfOZ57IL-3EHpw-Hyd5yZ90ZjZgTg0Kc',
-    )
+    fetch(url)
       .then((res) => res.json())
       .then((data) => {
         setBooks(data.items);
-        console.log(data.items);
       });
   }, []);
 
   if (!books) return null;
 
   return (
-    <Gallery>
-      {books.map((book) => (
-        <Card>
-          {book.volumeInfo.imageLinks && (
-            <CardImageContainer>
-              <BookImg src={book.volumeInfo.imageLinks.smallThumbnail} />
-            </CardImageContainer>
-          )}
-          <CardInfo>
-            <h3>Title: {book.volumeInfo.title}</h3>
-            <p>Author: {book.volumeInfo.authors}</p>
-            <p>Publish Year: {book.volumeInfo.publishedDate}</p>
-          </CardInfo>
-        </Card>
-      ))}
-    </Gallery>
+    <>
+      <SearchBar />
+      <Gallery>
+        {books.map((book) => (
+          <Card>
+            {book.volumeInfo.imageLinks && (
+              <CardImageContainer>
+                <BookImg src={book.volumeInfo.imageLinks.smallThumbnail} />
+              </CardImageContainer>
+            )}
+            <CardInfo>
+              <h3>Title: {book.volumeInfo.title}</h3>
+              <p>Author: {book.volumeInfo.authors}</p>
+              <p>Publish Year: {book.volumeInfo.publishedDate}</p>
+            </CardInfo>
+          </Card>
+        ))}
+      </Gallery>
+    </>
   );
 }
 

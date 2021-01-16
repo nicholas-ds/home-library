@@ -2,10 +2,11 @@ import './App.css';
 import Navbar from './components/Nav';
 import Books from './components/Books';
 import Account from './components/Account';
+import CounterContext from './components/SearchBar';
+
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import styled from 'styled-components';
-import SearchBar from './components/SearchBar';
 
 function App() {
   return (
@@ -17,10 +18,10 @@ function App() {
             <Container>Homepage</Container>
           </Route>
           <Route path="/books" exact>
-            <SearchBar />
             <Books />
           </Route>
           <Route path="/account" exact>
+            <CounterContext />
             <Account />
             <div>Account</div>
           </Route>
@@ -32,8 +33,6 @@ function App() {
 
 const Container = styled.div`
   background: #708090;
-  height: 100vh;
-  padding: 30px;
 `;
 
 export default App;
