@@ -1,5 +1,5 @@
 import './App.css';
-import Navbar from './components/Nav';
+import Navbar from './components/Navbar';
 import Books from './components/Books';
 import Account from './components/Account';
 import CounterContext from './components/SearchBar';
@@ -11,12 +11,10 @@ import styled from 'styled-components';
 function App() {
   return (
     <BrowserRouter>
+      <Navbar />
       <Container>
-        <Navbar />
         <Switch>
-          <Route path="/" exact>
-            <Container>Homepage</Container>
-          </Route>
+          <Route path="/" exact></Route>
           <Route path="/books" exact>
             <Books />
           </Route>
@@ -32,7 +30,11 @@ function App() {
 }
 
 const Container = styled.div`
-  background: #708090;
+  background: #f9f7f4;
+  min-width: 430px;
+  margin: 100px;
+  border-radius: 25px;
+  box-shadow: 2px 2px 2px rgba(0, 20, 30, 0.5);
 `;
 
 export default App;

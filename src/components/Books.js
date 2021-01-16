@@ -49,18 +49,19 @@ const Gallery = styled.div`
   grid-auto-rows: 1fr;
   max-width: 1200px;
   margin: auto;
+  padding: 50px;
 `;
 
 const Card = styled.div`
+  background-color: #e7e3e2;
+  box-shadow: 2px 2px 2px rgba(0, 20, 30, 0.5);
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-start;
   cursor: pointer;
-  padding: 10px;
-  background: rgba(245, 245, 245, 0.9);
-  border-radius: 0.25em;
-  border: 1px solid rgba(50, 50, 50, 0.3);
+  padding: auto;
+  border-radius: 25px;
 `;
 
 const CardInfo = styled.div`

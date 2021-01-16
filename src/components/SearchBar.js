@@ -25,7 +25,7 @@ function SearchBar(props) {
 
 const BookSearch = styled.form`
   text-align: center;
-  padding: 15px;
+  padding: 35px;
 `;
 
 const SearchInput = styled.input`

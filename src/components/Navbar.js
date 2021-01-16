@@ -6,13 +6,13 @@ function Navbar() {
     <div>
       <Nav>
         <NavListItem>
-          <Link to="/">Home</Link>
+          <StyledLink to="/">Home</StyledLink>
         </NavListItem>
         <NavListItem>
-          <Link to="/Books">Books</Link>
+          <StyledLink to="/Books">Books</StyledLink>
         </NavListItem>
         <NavListItem>
-          <Link to="/Account">Account</Link>
+          <StyledLink to="/Account">Account</StyledLink>
         </NavListItem>
       </Nav>
     </div>
@@ -20,6 +20,7 @@ function Navbar() {
 }
 
 const Nav = styled.ul`
+  background-color: #c6c5b3;
   list-style-type: none;
   justify-content: flex-end;
   display: flex;
@@ -29,7 +30,13 @@ const Nav = styled.ul`
 `;
 
 const NavListItem = styled.li`
+  color: white;
   padding: 10px;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: white;
 `;
 
 export default Navbar;
