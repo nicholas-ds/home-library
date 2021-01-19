@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-function SearchBar(props) {
+function SearchBar() {
   const [search, setSearch] = useState('');
 
   const handleSubmit = (e) => {
@@ -25,7 +25,7 @@ function SearchBar(props) {
 
 const BookSearch = styled.form`
   text-align: center;
-  padding: 35px;
+  padding: 25px;
 `;
 
 const SearchInput = styled.input`

@@ -2,10 +2,12 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import SearchBar from './SearchBar';
 
+import notAvailable from '../images/imageNotAvailable.jpg';
+
 const url =
   'https://www.googleapis.com/books/v1/volumes?q=potter+inauthor:rowling&key=AIzaSyAxfOZ57IL-3EHpw-Hyd5yZ90ZjZgTg0Kc';
 
-function Books() {
+function Books(props) {
   const [books, setBooks] = useState();
 
   useEffect(() => {
@@ -20,19 +22,25 @@ function Books() {
 
   return (
     <>
+      {console.log(props)}
       <SearchBar />
       <Gallery>
         {books.map((book) => (
           <Card>
-            {book.volumeInfo.imageLinks && (
+            {(book.volumeInfo.imageLinks && (
               <CardImageContainer>
                 <BookImg src={book.volumeInfo.imageLinks.smallThumbnail} />
+              </CardImageContainer>
+            )) || (
+              <CardImageContainer>
+                <BookImg src={notAvailable} alt="Image Not Available" />
               </CardImageContainer>
             )}
             <CardInfo>
               <h3>Title: {book.volumeInfo.title}</h3>
               <p>Author: {book.volumeInfo.authors}</p>
               <p>Publish Year: {book.volumeInfo.publishedDate}</p>
+              <button>Add to collection</button>
             </CardInfo>
           </Card>
         ))}

@@ -2,7 +2,6 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Books from './components/Books';
 import Account from './components/Account';
-import CounterContext from './components/SearchBar';
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
@@ -19,7 +18,6 @@ function App() {
             <Books />
           </Route>
           <Route path="/account" exact>
-            <CounterContext />
             <Account />
             <div>Account</div>
           </Route>
@@ -32,7 +30,8 @@ function App() {
 const Container = styled.div`
   background: #f9f7f4;
   min-width: 430px;
-  margin: 100px;
+  max-width: 1300px;
+  margin: auto;
   border-radius: 25px;
   box-shadow: 2px 2px 2px rgba(0, 20, 30, 0.5);
 `;
