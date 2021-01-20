@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import SearchBar from './SearchBar';
 
 import notAvailable from '../images/imageNotAvailable.jpg';
 
-const url =
-  'https://www.googleapis.com/books/v1/volumes?q=potter+inauthor:rowling&key=AIzaSyAxfOZ57IL-3EHpw-Hyd5yZ90ZjZgTg0Kc';
-
 function Books(props) {
   const [books, setBooks] = useState();
+
+  const input = props.searchedValue;
+
+  const url = `https://www.googleapis.com/books/v1/volumes?q=harry&key=AIzaSyAxfOZ57IL-3EHpw-Hyd5yZ90ZjZgTg0Kc`;
 
   useEffect(() => {
     fetch(url)
@@ -22,8 +22,6 @@ function Books(props) {
 
   return (
     <>
-      {console.log(props)}
-      <SearchBar />
       <Gallery>
         {books.map((book) => (
           <Card>
