@@ -5,9 +5,17 @@ import Books from './Books';
 function BooksGallery() {
   const [search, setSearch] = useState('');
 
+  const [books, setBooks] = useState();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(search);
+    fetch(
+      `https://www.googleapis.com/books/v1/volumes?q=${search}&key=AIzaSyAxfOZ57IL-3EHpw-Hyd5yZ90ZjZgTg0Kc`,
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setBooks(data.items);
+      });
   };
 
   return (
@@ -22,7 +30,7 @@ function BooksGallery() {
           Search
         </SearchButton>
       </BookSearch>
-      <Books searchedValue={search} />
+      {books ? <Books books={books} /> : <div>Search for a book!</div>}
     </>
   );
 }

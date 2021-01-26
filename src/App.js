@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Account from './components/Account';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Login from './components/Login';
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
@@ -14,9 +15,11 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <Header />
+      <Route path="/" exact>
+        <Login />
+      </Route>
       <Container>
         <Switch>
-          <Route path="/" exact></Route>
           <Route path="/books" exact>
             <BooksGallery />
           </Route>

@@ -4,9 +4,9 @@ function Header() {
   return <Title>Home Library</Title>;
 }
 
-const Title = styled.div`
-  font-family: 'Nunito Sans', sans-serif;
-  padding: 25px;
+const Title = styled.h3`
+  font-family: 'Bungee Shade', cursive;
+  font-size: 75px;
   text-align: center;
 `;
 export default Header;

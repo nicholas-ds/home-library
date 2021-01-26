@@ -1,25 +1,8 @@
-import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import notAvailable from '../images/imageNotAvailable.jpg';
 
-function Books(props) {
-  const [books, setBooks] = useState();
-
-  const input = props.searchedValue;
-
-  const url = `https://www.googleapis.com/books/v1/volumes?q=harry&key=AIzaSyAxfOZ57IL-3EHpw-Hyd5yZ90ZjZgTg0Kc`;
-
-  useEffect(() => {
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        setBooks(data.items);
-      });
-  }, []);
-
-  if (!books) return null;
-
+function Books({ books }) {
   return (
     <>
       <Gallery>
