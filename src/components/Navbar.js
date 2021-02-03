@@ -9,10 +9,13 @@ function Navbar() {
           <StyledLink to="/">Home</StyledLink>
         </NavListItem>
         <NavListItem>
-          <StyledLink to="/Books">Books</StyledLink>
+          <StyledLink to="/books">Books</StyledLink>
         </NavListItem>
         <NavListItem>
           <StyledLink to="/Account">Account</StyledLink>
+        </NavListItem>
+        <NavListItem>
+          <StyledLink to="/SignUp">SignUp!</StyledLink>
         </NavListItem>
       </Nav>
     </div>
