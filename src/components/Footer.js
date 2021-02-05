@@ -5,6 +5,13 @@ function Footer() {
 }
 
 const Copyright = styled.div`
+  position: fixed;
+  height: 50px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin-bottom: 0px;
+
   padding: 25px;
   text-align: center;
 `;

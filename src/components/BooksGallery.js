@@ -20,20 +20,29 @@ function BooksGallery() {
 
   return (
     <>
-      <BookSearch onSubmit={handleSubmit}>
-        <SearchInput
-          type="text"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        ></SearchInput>
-        <SearchButton type="submit" value="Submit">
-          Search
-        </SearchButton>
-      </BookSearch>
-      {books ? <Books books={books} /> : <div>Search for a book!</div>}
+      <SearchContainer>
+        <BookSearch onSubmit={handleSubmit}>
+          <SearchInput
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          ></SearchInput>
+          <SearchButton type="submit" value="Submit">
+            Search
+          </SearchButton>
+        </BookSearch>
+      </SearchContainer>
+
+      {books ? (
+        <Books books={books} />
+      ) : (
+        <SearchPrompt>Search for a book!</SearchPrompt>
+      )}
     </>
   );
 }
+
+const SearchContainer = styled.div``;
 
 const BookSearch = styled.form`
   text-align: center;
@@ -48,6 +57,10 @@ const SearchInput = styled.input`
 const SearchButton = styled.button`
   border-radius: 4px;
   border: none;
+  text-align: center;
+`;
+
+const SearchPrompt = styled.div`
   text-align: center;
 `;
 

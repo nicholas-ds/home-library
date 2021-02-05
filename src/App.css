@@ -1,15 +1,14 @@
 body {
-  background-color: #c6c5b3;
+  background-image: url('./images/graph_paper.gif');
 }
 
 #root {
-  background-color: #c6c5b3;
+  background-image: url('./images/graph_paper.gif');
 }
 
 .App {
   text-align: center;
 }
-
 
 .App-header {
   background-color: #282c34;
@@ -25,4 +24,3 @@ body {
 .App-link {
   color: #61dafb;
 }
-

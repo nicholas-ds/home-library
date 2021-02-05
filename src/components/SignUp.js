@@ -1,15 +1,20 @@
 import styled from 'styled-components';
 
-function SignUp() {
+function SignUp(e) {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
   return (
     <LoginModal>
-      <LoginForm>
-        <LoginField type="text" id="email" name="email" />
-        <LoginField type="text" id="password" name="password" />
+      <LoginForm onSubmit={handleSubmit}>
+        <LoginField type="email" id="email" name="email" placeholder="Email" />
+        <LoginField
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Password"
+        />
         <LoginButton onClick={handleSubmit}>Login!</LoginButton>
       </LoginForm>
     </LoginModal>
