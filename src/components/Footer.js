@@ -5,7 +5,9 @@ function Footer() {
 }
 
 const Copyright = styled.div`
+  display: flex;
   position: fixed;
+  justify-content: center;
   height: 50px;
   bottom: 0px;
   left: 0px;

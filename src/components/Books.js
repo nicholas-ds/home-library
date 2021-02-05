@@ -21,7 +21,7 @@ function Books({ books }) {
               <h3>Title: {book.volumeInfo.title}</h3>
               <p>Author: {book.volumeInfo.authors}</p>
               <p>Publish Year: {book.volumeInfo.publishedDate}</p>
-              <button>Add to collection</button>
+              <AddToCollection type="button" value="Add to collection" />
             </CardInfo>
           </Card>
         ))}
@@ -42,7 +42,7 @@ const Gallery = styled.div`
 `;
 
 const Card = styled.div`
-  background-color: #e7e3e2;
+  background-color: #d0db97;
   box-shadow: 2px 2px 2px rgba(0, 20, 30, 0.5);
   display: flex;
   flex-direction: row;
@@ -50,7 +50,7 @@ const Card = styled.div`
   justify-content: flex-start;
   cursor: pointer;
   padding: auto;
-  border-radius: 25px;
+  border-radius: 15px;
 `;
 
 const CardInfo = styled.div`
@@ -63,6 +63,33 @@ const BookImg = styled.img`
   padding: 10px;
   width: 95px;
   border-radius: 25%;
+`;
+
+const AddToCollection = styled.input`
+   display: inline-block;
+   padding: 0.35em 1.2em;
+   border: 0.1em solid #ffffff;
+   margin: 0 0.3em 0.3em 0;
+   border-radius: 0.12em;
+   box-sizing: border-box;
+   text-decoration: none;
+   font-family: 'Roboto', sans-serif;
+   font-weight: 300;
+   color: black;
+   text-align: center;
+   transition: all 0.2s;
+
+  animation:bouncy 5s infinite linear;
+ position:relative;
+
+  @keyframes bouncy {
+ 0%{top:0em}
+ 40%{top:0em}
+ 43%{top:-0.9em}
+ 46%{top:0em}
+ 48%{top:-0.4em}
+ 50%{top:0em}
+ 100%{top:0em;}
 `;
 
 export default Books;

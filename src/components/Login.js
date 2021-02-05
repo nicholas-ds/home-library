@@ -11,27 +11,29 @@ function Login() {
   return (
     <LoginModal>
       <LoginForm onSubmit={handleSubmit}>
-        <LoginLabel htmlFor="username">Username</LoginLabel>
+        <LoginLabel htmlFor="username">
+          <h3>USERNAME</h3>
+        </LoginLabel>
         <LoginField type="text" id="username" name="username" />
-        <LoginLabel htmlFor="password">Password</LoginLabel>
+        <LoginLabel htmlFor="password">
+          <h3>PASSWORD</h3>
+        </LoginLabel>
         <LoginField type="text" id="password" name="password" />
         <LoginButton>Login!</LoginButton>
-      </LoginForm>
-      <LoginForm>
-        <LoginButton>Sign Up</LoginButton>
       </LoginForm>
     </LoginModal>
   );
 }
 
 const LoginModal = styled.div`
-  background: #f9f7f4;
+  background: #d0db97;
+  box-shadow: 2px 2px 2px rgba(0, 20, 30, 0.5);
   margin: 0 auto;
   width: 400px;
   text-align: center;
   display: flex;
   justify-content: center;
-  border-radius: 25px;
+  border-radius: 15px;
 `;
 
 const LoginForm = styled.form`
@@ -39,7 +41,9 @@ const LoginForm = styled.form`
   line-height: 3rem;
 `;
 
-const LoginLabel = styled.label``;
+const LoginLabel = styled.label`
+  font-weight: bold;
+`;
 
 const LoginField = styled.input`
   display: block;
