@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-
-const iconClick = () => {
-  console.log('hi');
-};
+import { useState } from 'react';
+import Modal from 'react-modal';
 
 function Navbar() {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
   return (
     <div>
       <Nav>
@@ -17,10 +17,10 @@ function Navbar() {
         </NavListItem>
         <NavListItem>
           <AccountIcon
-            onClick={iconClick}
+            onClick={() => setModalIsOpen(true)}
             xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
+            width="30"
+            height="30"
             fill="currentColor"
             className="bi bi-person-circle"
             viewBox="0 0 16 16"
@@ -33,6 +33,33 @@ function Navbar() {
           </AccountIcon>
         </NavListItem>
       </Nav>
+      <Modal isOpen={modalIsOpen}>
+        <AccountModal>
+          <AccountContent>
+            <ModalHeader>Account Settings</ModalHeader>
+            <div>
+              <p>
+                This is a modal window. You can do the following things with it:
+              </p>
+              <ul>
+                <li>
+                  <strong>Read:</strong> modal windows will probably tell you
+                  something important so don't forget to read what they say.
+                </li>
+                <li>
+                  <strong>Look:</strong> a modal window enjoys a certain kind of
+                  attention; just look at it and appreciate its presence.
+                </li>
+                <li>
+                  <strong>Close:</strong> click on the button below to close the
+                  modal.
+                </li>
+              </ul>
+              <button onClick={() => setModalIsOpen(false)}>Close me!</button>
+            </div>
+          </AccountContent>
+        </AccountModal>
+      </Modal>
     </div>
   );
 }
@@ -43,8 +70,8 @@ const AccountIcon = styled.svg`
 
 const Nav = styled.ul`
   list-style-type: none;
-  justify-content: flex-end;
   display: flex;
+  justify-content: flex-end;
   margin: 0;
   padding: 0;
   height: 8vh;
@@ -53,12 +80,40 @@ const Nav = styled.ul`
 `;
 
 const NavListItem = styled.li`
+  font-size: 30px;
+  :hover {
+    transform: scale(1.1);
+  }
   padding: 10px;
 `;
 
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: black;
+`;
+
+const AccountModal = styled.div`
+  border-radius: 15px;
+  padding: 15px;
+  background-color: orange;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+const AccountContent = styled.div`
+  font-size: 100%;
+  position: relative;
+  border-radius: 3px;
+  margin: 0 auto;
+  transition: all 0.3s;
+  transform: scale(1);
+  opacity: 1;
+`;
+
+const ModalHeader = styled.h3`
+  text-align: center;
 `;
 
 export default Navbar;

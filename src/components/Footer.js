@@ -13,7 +13,7 @@ const Copyright = styled.div`
   left: 0px;
   right: 0px;
   margin-bottom: 0px;
-
+  font-weight: bold;
   padding: 25px;
   text-align: center;
 `;
