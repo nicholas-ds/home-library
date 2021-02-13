@@ -1,49 +1,101 @@
 import styled from 'styled-components';
+import { useState } from 'react';
 
-function SignUp(e) {
+function SignUp() {
+  const [user, setUser] = useState({});
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    fetch('/users/register', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log('response data', data));
   };
 
   return (
     <LoginModal>
       <LoginForm onSubmit={handleSubmit}>
-        <LoginField type="email" id="email" name="email" placeholder="Email" />
+        <LoginLabel htmlFor="firstName">
+          <h3>First Name</h3>
+        </LoginLabel>
         <LoginField
-          type="password"
+          onChange={({ target: { value } }) =>
+            setUser({ ...user, firstName: value })
+          }
+          type="text"
+          id="firstName"
+          name="firstName"
+        />
+        <LoginLabel htmlFor="lastName">
+          <h3>Last Name</h3>
+        </LoginLabel>
+        <LoginField
+          onChange={({ target: { value } }) =>
+            setUser({ ...user, lastName: value })
+          }
+          type="text"
+          id="lastName"
+          name="lastName"
+        />
+
+        <LoginLabel htmlFor="email">
+          <h3>EMAIL</h3>
+        </LoginLabel>
+        <LoginField
+          onChange={({ target: { value } }) =>
+            setUser({ ...user, email: value })
+          }
+          type="email"
+          id="email"
+          name="email"
+        />
+        <LoginLabel htmlFor="password">
+          <h3>PASSWORD</h3>
+        </LoginLabel>
+        <LoginField
+          onChange={({ target: { value } }) =>
+            setUser({ ...user, password: value })
+          }
+          type="text"
           id="password"
           name="password"
-          placeholder="Password"
         />
-        <LoginButton onClick={handleSubmit}>Login!</LoginButton>
+        <LoginButton onClick={handleSubmit}>Sign Up!</LoginButton>
       </LoginForm>
     </LoginModal>
   );
 }
 
 const LoginModal = styled.div`
-  background: #f9f7f4;
+  background: #d0db97;
+  box-shadow: 2px 2px 2px rgba(0, 20, 30, 0.5);
   margin: 0 auto;
-  max-width: 400px;
+  width: 400px;
   text-align: center;
+  display: flex;
   justify-content: center;
-  border-radius: 25px;
+  border-radius: 15px;
 `;
 
 const LoginForm = styled.form`
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  padding: 50px;
+  padding: 10px;
   line-height: 3rem;
 `;
 
-const LoginField = styled.input`
-  margin: 10px;
+const LoginLabel = styled.label`
+  font-weight: bold;
 `;
 
-const LoginButton = styled.button`
-  margin: 10px;
+const LoginField = styled.input`
+  display: block;
+  padding: 5px;
 `;
+
+const LoginButton = styled.button``;
 
 export default SignUp;

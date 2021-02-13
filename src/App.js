@@ -26,10 +26,10 @@ function App() {
           <Account />
           <div>Account</div>
         </Route>
+        <Route path="/register" exact>
+          <SignUp />
+        </Route>
       </Switch>
-      <Route path="/signUp" exact>
-        <SignUp />
-      </Route>
       <Footer />
     </BrowserRouter>
   );

@@ -6,7 +6,7 @@ function Footer() {
 
 const Copyright = styled.div`
   display: flex;
-  position: fixed;
+  ${'' /* position: fixed; */}
   justify-content: center;
   height: 50px;
   bottom: 0px;

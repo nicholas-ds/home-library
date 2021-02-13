@@ -1,25 +1,54 @@
 import styled from 'styled-components';
+import { useState } from 'react';
 
 function Login() {
+  const [user, setUser] = useState({});
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch('/test')
+    fetch('/users/login', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        if (data.status === 'error') {
+          console.log('wrong email or password');
+        }
+
+        console.log('response data', data);
+      });
   };
 
   return (
     <LoginModal>
       <LoginForm onSubmit={handleSubmit}>
-        <LoginLabel htmlFor="username">
-          <h3>USERNAME</h3>
+        <LoginLabel htmlFor="email">
+          <h3>EMAIL</h3>
         </LoginLabel>
-        <LoginField type="text" id="username" name="username" />
+        <LoginField
+          onChange={({ target: { value } }) =>
+            setUser({ ...user, email: value })
+          }
+          type="text"
+          id="email"
+          name="email"
+        />
         <LoginLabel htmlFor="password">
           <h3>PASSWORD</h3>
         </LoginLabel>
-        <LoginField type="text" id="password" name="password" />
-        <LoginButton>Login!</LoginButton>
+        <LoginField
+          onChange={({ target: { value } }) =>
+            setUser({ ...user, password: value })
+          }
+          type="text"
+          id="password"
+          name="password"
+        />
+        <LoginButton onClick={handleSubmit}>Login!</LoginButton>
       </LoginForm>
     </LoginModal>
   );
